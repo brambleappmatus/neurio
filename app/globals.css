@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* Audio player styles */
+.audio-progress-container {
+  @apply relative h-2 bg-black/5 dark:bg-white/5 rounded-full overflow-hidden cursor-pointer;
+}
+
+.audio-progress-bar {
+  @apply absolute top-0 left-0 h-full bg-emerald-500 rounded-full pointer-events-none;
+  transition: width 0.05s linear;
+}
+
+.audio-progress {
+  @apply w-full h-2 appearance-none bg-transparent cursor-pointer relative z-10;
+}
+
+.audio-progress::-webkit-slider-thumb {
+  @apply appearance-none w-3 h-3 bg-emerald-500 rounded-full cursor-pointer shadow-lg transition-transform duration-150;
+  transform: scale(0);
+}
+
+.audio-progress:hover::-webkit-slider-thumb {
+  transform: scale(1);
+}
+
+.volume-slider {
+  @apply w-20 h-1.5 bg-black/5 dark:bg-white/5 rounded-full cursor-pointer appearance-none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  @apply appearance-none w-2.5 h-2.5 bg-black dark:bg-white rounded-full cursor-pointer shadow-lg;
+}
+
+/* Glass effect */
+.glass-effect {
+  @apply backdrop-blur-xl bg-white/10 dark:bg-black/30 border border-black/10 dark:border-white/10 shadow-xl;
+}
+
+/* Infinite scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+.logos-container {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
